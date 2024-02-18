@@ -1,0 +1,1117 @@
+___________________
+Índice de Comandos 
+___________________
+
+- SELECT
+- DISTINCT 
+- WHERE
+- COUNT
+
+
+___________________
+Operadores Lógicos
+___________________
+
+( = ) igual
+( > ) maior que
+( < ) menor que 
+( >= ) Maior que ou igual
+( <= ) Menor que ou igual
+( <> ) Diferente de 
+( OR ) Operador lógico "ou"
+( AND ) Operador lógico "e"
+
+
+________________
+Procedures
+________________
+
+- exec sp_rename 'nometabela.nomecolunaatual', 'nomecolunanova', 'column'
+
+- exec sp_columns tabela
+
+- exec sp_rename 'nometabelaatual', 'nometabelanova'
+
+
+______________
+Lembretes
+______________
+
+LEMBRETE 1: Ao criar uma tabela nova, não utilizar INT mas sim NUMERIC
+
+
+___________________________
+Restaurando Banco de Dados
+___________________________
+
+1 - Acesse/baixe o banco de dados já existente (arquivo .bak)
+2 - SQL
+3 - Databases (Menú Lateral) - c/ botão direito
+4 - "Restore Database" 
+*POP-UP*
+5 - Opção "Device" em Source 
+6 - Botão três pontinhos na lateral direita 
+*POP-UP*
+7 - Botão "Add" na lateral direita 
+8 - Apagar o "Back File Location"
+9 - Copiar o endereço do arquivo do seu banco de dados 
+
+PROBLEMA ENCONTRADO: 
+Arquivo .bak estava na pasta "usuário". Não encontrava nem a pasta download. Tem que enviar o arquivo p/ pasta pública
+
+10 - Selecionar .bak
+11 - OK
+12 - OK
+13 - OK
+*POP-UP*
+14 - OK
+15 - Dar "Refresh" (No segundo cabeçalho a baixo de "Object Explorer")
+* O banco de dados agora aparecerá na árvore de opções "Database".
+* Ao expandir a árvore do banco, as tabelas estarão em "Tables".
+16 - Botão Direito em qualquer tabela 
+17 - "Select TOP 1000 Rows"
+
+
+__________________
+Select + Desafios 
+__________________
+
+- O comando "Select" é o comando mais básico e o mais utilizado no SQL.
+
+- É utilizado dentro do Excel.
+
+- Será executada uma busca em cima de dados, neste caso de exemplos tabelados.
+
+- Nós estaremos selecionando uma quantidade específica de linhas, com um tipo específico de categoria, que nós iremos definir em nosso comando. 
+
+- É um comando universal que funcionará em qualquer banco de dados.
+
+- A idéia é que você selecione uma coluna, ou mais, ou todas, de uma tabela. 
+
+- Funciona no SQL SERVER, POSTGRES, ORACLE, my SQL
+
+-Sintaxe-
+1 - SELECT coluna1, coluna2, (nome das colunas selecionadas)
+2 - FROM tabela (nome da tabela)
+3 - 
+4 - SELECT * (o asterístico é utilizado quando você quer que retorne todas as colunas do banco de dados, e não apenas uma ou outra)
+5 - FROM tabela 
+
+-SQL-
+- Database 
+- Botão direito no banco de dados 
+- New Query 
+- Comando 
+1 - SELECT * 
+2 - FROM person.person 
+  - Clicar "F5" no teclado ou "Execute" no cabeçalho para executar o comando 
+
+- Cada linha exibida no retorno representa uma entrada no banco de dados 
+
+- Cada coluna representa o detalhe desta entrada 
+
+- Entrada = informação 
+
+- Para filtrar a informação retornada, utilizaremos o comando SELECT, especificando o nome da coluna (o detalhe) 
+
+1 - SELECT title (coluna específica)
+2 - FROM person.person 
+
+- Neste caso, como iremos executar somente o comando para filtrarmos o título, teremos que selecionar somente estas duas linhas, apertando e segurando obotão esquerdo do mouse.
+
+1 - SELECT *
+2 - FROM person.emailadress 
+
+- Retorna todas as informações desta tabela em específico 
+
+  
+____________________
+Distinct + Desafios
+____________________
+
+- O comando DISTINCT é utilizadoquando queremos omitir os dados duplicados de uma tabela. Ou seja, quando queremos retornar os dados de forma única 
+
+-Sintaxe-
+1 - SELECT DISTINCT coluna1, coluna2
+2 - FROM tabela 
+
+-SQL-
+1 - SELECT DISTINCT firstname 
+2 - FROM person.person 
+
+
+_________________
+Where + Desafios 
+_________________
+
+- Para extrair alguns dados, algumas informações em particular destas tabelas, utilizaremos o comando WHERE. 
+
+-SINTAXE-
+1 - SELECT coluna1, coluna2, coluna_n
+2 - FROM tabela 
+3 - WHERE condição
+
+-SQL-
+1 - SELECT *
+2 - FROM person.person 
+3 - WHERE lastname = 'miler' AND firstname = 'anna'
+  - Queremos todos os sobrenomes Miler e todos os nomes Anna
+
+-SQL-
+1 - SELECT*
+2 - FROM production.product 
+3 - WHERE color = 'blue' OR color = 'black' 
+  - Não pode ser "AND" porque não há produtos com duas cores 
+
+-SQL-
+1 - SELECT*
+2 - FROM production.product
+3 - WHERE listprice > 1500 AND listprice < 5000
+
+-SQL-
+1 - SELECT*
+2 - FROM production.product
+3 - WHERE color <> 'red'
+
+ 
+________
+Count
+________
+
+- O comando COUNT serve para te retornar o número de linhas de acordo com uma condição definida
+
+-SINTAXE-
+1 - SELECT COUNT (*)
+2 - FROM tabela 
+
+-SQL-
+1 - SELECT COUNT (Distinct title)
+2 - FROM person.person
+
+- Para descobrir quantos títulos há (Sr., Srta., Mr., Mss.)
+
+
+_______________
+Top + Desafios
+_______________
+
+- O comando TOP serve para limitar a quantidade de dados retornados do SELECT
+
+- Lembrando que o banco que estamos utilizando não possui tantos dados assim... Em um banco de produção pode ocorrer de ter milhões de linhas de retorno 
+
+-SINTAXE-
+1 - SELECT TOP 10 *
+2 - FROM tabela 
+
+-SQL-
+1 - SELECT TOP 10 *
+2 - FROM production.product 
+
+
+____________________
+Order by + Desafios
+____________________
+
+- O comando ORDER BY permite que os resultados sejam ordenados por alguma coluna, em ordem crescente ou decrescente. 
+
+-SINTAXE-
+1 - SELECT coluna1, coluna2
+2 - FROM tabela 
+3 - ORDER BY coluna1 ASC/DESC
+  - ASC funciona para ordem alfabética 
+
+-SQL-
+1 - SELECT *
+2 - FROM person.person
+3 - ORDER BY firstname ASC
+  - O retorno será em ordem alfabética do nome (A-Z), nos nomes repetidos a ordem será do          sobrenome (Z-A)
+
+-SQL-
+1 - SELECT firstname, lastname
+2 - FROM person.person
+3 - ORDER BY firstname ASC, lastname DESC
+
+- Caso haja "midlename", a coluna deverá ser declarada no SELECT em caso de consulta. O sistema nunca irá ordenar sozinho. 
+
+
+________
+Between
+________
+
+- O comando Between é usado para encontrar valor entre um valor mínimo e valor máximo. 
+
+- É a mesma coisa que dizer: valor >= mínimo AND valor <= máximo 
+
+-SQL-
+1 - SELECT *
+2 - FROM production.product
+3 - WHERE listprice BETWEEN 1000 and 1500
+
+-SQL-
+1 - SELECT *
+2 - FROM production.product
+3 - WHERE listprice NOT BETWEEN 1000 AND 1500
+
+-SQL-
+1 - SELECT *
+2 - FROM humanresources.employee
+3 - WHERE hiredate BETWEEN '2009/01/01' AND '2010/01/01'
+  - Datas no SQL são representadas por ano/mês/dia
+
+
+_______
+In
+_______
+
+- Nós usamos o operador IN junto com o WHERE, para verificar se um valor corresponde com qualquer valor passado na lista de valores
+
+-SINTAXE-
+1 - valor IN (valor1, valor2)
+1 - valor IN (SELECT valor FROM tabela)
+
+-SQL-
+1 - SELECT *
+2 - FROM person.person
+3 - WHERE businessentityID IN (2,7,13)
+4 -                                         } Mais prático                                  
+5 - SELECT *
+6 - FROM person.person
+7 - WHERE businessentityID = 2
+8 - OR businessentityID = 7 
+9 - OR businessentityID = 13 
+
+
+________
+Like
+________
+
+- Vamos dizer que você quer encontrar uma pessoa no banco de dados que você sabe que o nome dela era ovi... alguma coisa. Quando não se há certeza da informação, utilizamos o comando LIKE.
+
+-SQL-
+1 - SELECT *
+2 - FROM person.person
+3 - WHERE firstname LIKE 'ovi%' 
+  - % no final p/ quando não lembrar do final
+  - Resposta: Ovídio
+
+-SQL-
+1 - SELECT *
+2 - FROM person.person
+3 - WHERE firstname LIKE '%to' 
+  - % no começo quando não lembrar do começo 
+  - Resposta: Humberto
+
+-SQL-
+1 - SELECT *
+2 - FROM person.person 
+3 - WHERE firstname LIKE '%essa%'
+  - % no começo e no final para quando só se lembra do meio
+  - Resposta: Vanessa 
+
+-SQL-
+1 - SELECT *
+2 - FROM person.person
+3 - WHERE firstname LIKE '%ro_'
+  - Se fosse '%ro' o sistema buscaria nomes com infindáveis caracteres após a Letra "O". O underline limita o sistema a procurar por nomes com exclusivamente um (1) carácter após a letra "O". 
+
+
+________________
+Min Max Sum Avg
+________________
+
+- São as principais funções de agregação 
+
+- As funções de agregação basicamente agregam ou combinam dados de uma tabela em 1 (um) resultado só. 
+
+-SQL-
+1 - SELECT TOP 10 SUM (linetotal) AS "Soma" 
+2 - FROM sales.salesorderdetail 
+  - como a coluna de retorno não possui nome (no column name), utilizamos o "AS" para colocar um nome nela. 
+
+-SQL-
+1 - SELECT TOP 10 MIN (linetotal) AS "Mínimo"
+2 - FROM sales.salesorderdetail
+
+-SQL-
+1 - SELECT TOP 10 MAX (linetotal) AS "Máximo"
+2 - FROM sales.salesorderdetail
+
+-SQL-
+1 - SELECT TOP 10 AVG (linetotal) AS "Média"
+2 - FROM sales.salesorderdetail
+
+
+____________
+Group By
+____________
+
+- O comando GROUP BY basicamente divide o resultado da sua pesquisa em grupos 
+
+-SINTAXE-
+1 - SELECT coluna1, FUNÇÃO AGREGAÇÃO (coluna2)
+2 - FROM nometabela
+3 - GROUP BY coluna1
+
+-SQL-
+1 - SELECT specialofferID, SUM (unitprice) AS "Soma"
+2 - FROM sales.salesorderdetail
+3 - GROUP BY specialofferID
+4 -                                    } Substitui 
+5 - SELECT specialofferID, unitprice
+6 - FROM sales.salesorderdetail
+7 - WHERE specialofferID = 9
+
+
+Exercício Group By 1)
+Vamos dizer que eu quero saber quantos de cada produto foram vendidos até hoje?
+
+-SQL-
+1 - SELECT productID, COUNT (productID) AS "Contagem"
+2 - FROM sales.salesorderdetail
+3 - GROUP BY productID
+
+
+Exercício Group By 2)
+Digamos que eu queira saber quantos nomes de cada nome temos cadastrado em nosso banco de dados?
+
+-SQL-
+1 - SELECT firstname, COUNT (firstname)
+2 - FROM person.person
+3 - GROUP BY firstname 
+
+
+Exercício Group By 3)
+Na tabela production.product eu quero saber a média de preço para os produtos que são pratas (silver)?
+
+-SQL-
+1 - SELECT color, AVG (listprice)
+2 - FROM production.product
+3 - WHERE color 'silver'
+4 - GROUP BY color 
+
+
+________
+Having
+________
+
+- O comando HAVING é basicamente muito usado em junção com o GROUP BY para filtrar resultados de um agrupamento 
+
+- De uma forma mais simples, o HAVING tem a função de WHERE, só que para dados agrupados 
+
+- A grande diferença ente HAVING e WHERE, é que o GROUP BY é aplicado depois que os dados já foram agrupados, enquanto o WHERE é aplicado antes dos dados serem agrupados. 
+
+- O HAVING necessariamente precisa vir depois do GROUP BY 
+
+
+Exemplo Having 1) Vamos dizer que queremos saber quais nomes no sistema tem uma ocorrência maior que 10 vezes 
+
+-SQL-
+1 - SELECT firstname, COUNT (firstname) AS "Quantidade"
+2 - FROM person.person
+3 - GROUP BY firstname 
+4 - HAVING COUNT (firstname) > 10 
+
+Exemplo Having 2) Queremos saber quais produtos que no total de vendas estão entre 162K a 500K
+
+-SQL-
+1 - SELECT productID, SUM (linetotal) AS "Total"
+2 - FROM sales.salesorderdetail
+3 - GROUP BY productID 
+4 - HAVING SUM (linetotal) BETWEEN 162000 AND 500000
+
+Exemplo Having 3) Você quer saber quais nomes no sistema tem uma ocorrência maior que 10 vezes, porém somente onde o título é 'Mr.'. 
+
+-SQL-
+1 - SELECT firstname, COUNT (firstname) AS "Quantidade"
+2 - FROM person.person
+3 - WHERE title = 'Mr.'
+4 - GROUP BY firstname 
+5 - HAVING COUNT (firstname) > 10 
+  - Mesma coisa que o exercício1, mas com a aplicação do WHERE ao meso tempo do HAVING 
+
+
+________
+As
+________
+
+- O comando do AS serve para renomear as colunas paradar um apelido a elas. Pode dar nome a uma coluna, Select ou agregação. 
+
+-SQL-
+1 - SELECT TOP 10 listprice AS "Preço" 
+2 - FROM production.product 
+  - Se for uma única palavra, não precisa necessariamente de aspas. Duas ou mais precisa.
+
+-SQL-
+1 - SELECT TOP 10 AVG (listprice) AS "Preço Médio"
+2 - FROM production.product
+
+
+______________
+Inner Join
+______________
+
+- É um dos comandos mais comuns ao se trabalhar com query's, para juntar informações de outras tabelas. 
+
+- Existe 3 tipos gerais de joins 
+	- Inner Join
+	- Outer Join 
+	- Self Join 
+
+-SINTAXE-
+1 - SELECT c.clienteID, c.nome, e.rua, e.cidade
+2 - FROM cliente c
+3 - INNER JOIN endereço e ON e.endereço = c.endereço 
+
+
+Exemplo Inner Join 1) 
+Colocar no mesmo retorno: businessentityID, firstname, lastname, emailadress
+
+-SQL-
+1 - SELECT p.businessentityID, p.firstname, p.lastname, pe.emailadress
+2 - FROM person.person AS p
+3 - INNER JOIN person.emailadress AS pe ON p.businessentityID = pe.businessentityID
+
+*Quando há colunas com nomes iguais, necessariamente você precisa colocacar nomes/apelidos nelas. 
+
+
+Exemplo Inner Join 2) 
+Vamos dizer que nós queremos os nomes dos produtos e as informações de sias subcategorias. Queremos no retorno listprice, nome do produto, nome da subcategoria. 
+
+-SQL-
+1 - SELECT pr.listprice, pr.name, pc.name 
+2 - FROM production.product AS pr
+3 - INNER JOIN production.productsubcategory AS pc ON 
+4 - pc.productionsubcategoryID = pr.productionsubcategoryID
+
+*Neste caso, apenas procuramos alguma coluna em comum para poder unir as tabelas 
+
+- No próximo exemplo, estaremos unindo todas as informações das duas tabelas. Esta união é chamada de Produto Cartesiano. 
+
+
+Exemplo Inner Join 3) 
+Juntar as tabelas de endereço da empresa e da pessoa. 
+
+-SQL-
+1 - SELECT TOP 10 *
+2 - FROM person.businessentityaddress ba
+3 - INNER JOIN person.address pa ON pa.adressID = ba.addressID
+
+
+_________
+UNION
+_________
+
+- O operador UNION combina dois ou mais resultados de um SELECT em apenas um resultado. 
+
+-SINTAXE-
+1 - SELECT coluna1, coluna2
+2 - FROM tabela1
+3 - UNION 
+4 - SELECT coluna1, coluna2
+5 - FROM tabela2
+
+* O comando UNION irá retirar automaticamente os resultados duplicados. 
+* UNION ALL: para trazer no retorno dados duplicados 
+
+- Normalmente nós utilizaremos o UNION em tabelas não normalizadas 
+- Tabelas não normalizadas: são tabelas que possuem algum tipo de inconsistência. 
+
+
+Exemplo Union 1) 
+1 - SELECT productID, name, productnumber
+2 - FROM production.product
+3 - WHERE name LIKE '%chain%'
+4 - UNION 
+5 - SELECT productID, name, productnumber
+6 - FROM production.product 
+7 - WHERE name LIKE '%decal%'
+
+Exemplo Union 2)
+1 - SELECT firstname, title 
+2 - FROM person.person
+3 - WHERE title = 'Mr.' 
+4 - UNION 
+5 - SELECT firstname, title
+6 - FROM person.person
+7 - WHERE middlename = 'A' 
+
+
+______________________
+Novo Banco de Dados 1
+______________________
+
+1) Colar o Link disponibilizado no navegador
+2) Ctrl+A (para copiar tudo)
+3) Botão direito em "Database" 
+4) Opção "New Database"
+5) Cole as informações
+6) Execute 
+
+
+___________
+Self Join
+___________
+
+- O comando SELF JOIN traz uma forma de seagrupar dados ou de se ordenar dados dentro da mesma tabela.
+
+- Tem que usar o comando AS 
+
+
+Exercício Self Join 1) 
+Eu quero todos os clientes que moram na mesma região.
+
+-SQL-
+1 - SELECT a.contactname, a.region, h.contactname, h.region
+2 - FROM customers A, customers B
+3 - WHERE a.region = b.region 
+
+
+Exercício Self Join 2)
+Eu quero saber os funcionários que foram contratados no mesmo ano. 
+
+-SQL-
+1 - SELECT a.firstname, a.hiredate, b.firstname, b.hiredate
+2 - FROM employees A, employees B
+3 - WHERE DATEPART (year, a.hiredate) = DATEPART (year, b.hiredate)
+
+* A função DATEPART serve para selecionarmos somente uma parte da data. No caso do exercício, quisemos comparar somente o ano. 
+
+
+______________________ 
+Subquery ou Subselect
+______________________
+
+- Vai ajudar a montar query's mais "poderosas"
+
+- É um SELECT dentro de outro SELECT 
+
+
+Exemplo Subquery ou Subselect 1)
+Monte um relatório de todos os produtos cadastrados que tem preço de venda a cima da média. (banco e dados Adventure Works) 
+
+-SQL-
+1 - SELECT AVG (listprice)
+2 - FROM production.product
+3 - 
+4 - SELECT *
+5 - FROM production.product
+6 - WHERE listprice > 438.66
+
+* Supostamente teríamos primeiro que descobrir a média 
+* Para depois descobrir os produtos acima da média 
+
+-SQL-
+1 - SELECT *
+2 - FROM production.product
+3 - WHERE listprice > (SELECT AVG (listprice) FROM production.product)
+
+* Fazendo a subquery
+
+- Lembrando que vamos utilizar a subquery para filtrar de acordo com informações de outra tabela, e não trazer informações de outra tabela. 
+
+
+Exemplo Subquery ou Subselect 2)
+Eu quero saber o nome dos meus funcionários que tem o cargo de "Design Engineer"
+
+-SQL-
+1 - SELECT firstname 
+2 - FROM person.person
+3 - WHERE businessentityID IN (SELECT businessentityID 
+4 - FROM humanresources.employee 
+5 - WHERE jobtitle = 'Design Engineer')
+  - Resposta: 3 nomes 
+
+* Note que utilizamos o termo em comum para auxiliar no filtro de ambas as tabelas
+
+-SQL-
+1 - SELECT p.firstname
+2 - FROM person.person P
+3 - INNER JOIN humanresources.employee E ON p.businessentityID = e.businessentityID AND e.jobtitle = 'Design Engineer'
+
+
+____________
+Datepart 
+____________
+
+- Trabalhar dados relacionados a datas
+
+- Principalmente voltado para a parte de vendas 
+
+-SQL-
+1 - SELECT salesorderID, DATEPART (month, orderdate) AS "Mês" 
+2 - FROM sales.salesorderheader 
+
+Exemplo) Média a receber por mês nas vendas 
+
+-SQL-
+1 - SELECT AVG (totaldue) AS "Média", DATEPART (month, orderdate) AS "Mês" 
+2 - FROM sales.salesorderheader    [-Note que se fizessemos até aqui daria erro]
+3 - GROUP BY DATEPART (month, orderdate)
+  - Temos que agrupar o retorno via "Group by" 
+4 - ORDER BY mes 
+  - Se quisermos ainda podemos agrupar por mes 
+
+
+______________________
+Manipulação de String
+______________________
+
+- Uma string é uma combinação de carácteres 
+
+- As strings de conexão ou cadeia de caracteres de conexão especificam informações necessárias para se conectar à um banco de dados 
+
+-SQL-
+1 - SELECT CONCAT (firstname, ' ', lastname)
+2 - FROM person.person 
+  - Concatenar, juntar em uma mesma coluna 
+  - Se você não ensinar, o sistema vai te retornar nome e sobrenome juntos. Para ter espaço, tem que colocar ' ' (com espaço entre as áspas). 
+
+-SQL-
+1 - SELECT UPPER (firstname), LOWER (firstname)
+2 - FROM person.person 
+  - Para deixar todas as letras de cada linha em maiusuculo (UPPER)
+  - Ao contrário, para deixar tudo em minúsculo (LOWER)
+
+-SQL-
+1 - SELECT LEN (firstname)
+2 - FROM person.person  
+  - Para fazer a contagem de caracteres em cada string, ou letras por palavras 
+
+-SQL-
+1 - SELECT firstname, substring(fistname,1,3)
+2 - FROM person.person 
+  - Serve para extrair um pedaço de uma string 
+  - Indice 1 (a partir da primeira letra)
+  - 3 letras 
+
+-SQL-
+1 - SELECT REPLACE (productnumber, '-', '#')
+2 - FROM production.product
+  - Serve para fazer uma reposição
+  - Coluna selecionada
+  - Caracter ou string a ser trocado
+  - Caracter ou string de reposição
+
+
+______________________
+Operações Matemáticas
+______________________
+
+-SQL-
+1 - SELECT unitprice + linetotal
+2 - FROM sales.salesorderdetail
+
+-SQL-
+1 - SELECT unitprice - linetotal
+2 - FROM sales.salesorderdetail
+
+-SQL-
+1 - SELECT unitprice * linetotal
+2 - FROM sales.salesorderdetail
+
+-SQL-
+1 - SELECT unitprice / linetotal
+2 - FROM sales.salesorderdetail
+
+-SQL-
+1 - SELECT unitprice ROUND (linetotal, 2)
+2 - FROM sales.salesorderdetail
+  - Arredondar
+  - duas casas decimais 
+
+-SQL-
+1 - SELECT SQRT (linetotal)
+2 - FROM sales.salesorderdetail
+  - Raiz quadrada 
+
+
+_______________
+Tipos de Dados
+_______________
+
+1 - Boleanos
+2 - Caractere
+3 - Números
+4 - Temporais 
+
+
+#1 Boleano
+	Por padrão ele não é inicializado como nulo, e pode receber tanto 1 ou 0 (ou também 	nulo)
+	- BIT: representação ded dados boleano no SQL Server 
+
+#2 Caractere 
+	Permite inserir até uma quantidade fixa de caracteres e sempre ocupa todo o espaço 	reservado. Digamos que o CHAR seja definido como contendo 50 espaços de memória, 	mesmo que você "utilize" 10 espaços, no final ele vai ocupar os 50 espaços. 
+	- CHAR: representação (tamanho fixo).
+	- VARCHAR / NVARCHAR: tamanho variável - permite inserir até uma quantidade que for 	definid, porém só usa o espaço que foi preenchida. 
+	- No caso, se a memória possui 50 espaços, e se utilizarmos 10, os outros 40 	espaços vão restar. 
+
+#3 Números 
+	Valores exatos 
+	- TINYINT: não tem parte valor fracionados 
+	- SMALLINT: mesma coisa porém limite maior 
+	- INT: mesma cosia porém limite maior (tradicional)
+	- BIGINT: mesma coisa porém limite maior 
+	- NUMERIC / DECIMAL: valores exatos, porém permite ter parte fracionadas, que 	também pode ser especificado a precisão e escala (escala é o número de dígitos na 	parte fracional. ex: NUMERIC(5,2) = 113,44 = cinco caracteres armazenados e 2 casas 	decimais. 
+
+	Valores Aproximados 
+	- REAL: tem precisão aproximada de até 15 dígitos após a vírgula
+	- FLOAT: mesmo conceito real 
+
+#4 Temporais 
+	- DATE: armazena data no formato aaaa/mm/dd
+	- DATETIME: armazena data e hora no formato aaaa/mm/dd:hh:mm:ss
+	- DATETIME2: data e hora com a adição de milisegundos aaaa/mm/dd:hh:mm:sssssss
+	- SMALLDATETIME: data e hora respeitando o limite entre 1900-01-01:00:00:00 até 	2079/06/06:23:59:59
+	- TIME: horas, minutos, segundos, milisegundos, respeitando o limite 	00:00:00.0000000 até 23:59:59.9999999
+	- DATETIMEOFFSET: permite armazenar informações de data e horas incluindo o fuso 	horário.
+
+
+_____________________________
+Chave Primária e Estrangeira 
+_____________________________
+
+- Uma cave primária é basicamente uma coluna ou grupo de colunas, usada para identificar unicamente uma linha em uma tabela. 
+
+- Você consegue criar essas chaves primárias através de restrições (ou constrains), que são regras que você define quando está criando uma coluna. 
+
+- Assim quando você faz isso você está criando um índice único para aquela coluna ou grupo de colunas. 
+
+* A chave primária identifica a linha inteira. Ou seja, não vai haver segunda linha com as mesmas informações. 
+
+
+________________________
+Como criar uma tabela 
+________________________
+
+-SQL-
+1 - CREATE TABLE nome_tabela(
+2 - nome coluna tipodedados PRIMARY KEY
+3 - nome coluna tipodedados
+4 - ...
+5 - )
+
+- Uma chave estrangeira é uma coluna ou grupo de colunas em uma tabela que identifica unicamete uma linha em outra tabela. 
+
+- Ou seja, uma chave estrangeira é definida em uma tabela onde ela é apenas uma referência e não contém todos os dados ali. 
+
+- Então, uma chave estrangeira é simplesmente uma coluna ou grupo de colunas que é uma chave primária em outra tabela. 
+
+- A tabela que contém a chave estrangeira é chamada de tabela referenciadora ou tabela filho. E a tabela na qual a chave estrangeira é referenciada é chamada de tabela referenciada ou tabela pai. 
+
+- Uma tabela pode ter mais de uma chave estrangeira dependendo do seu relacionamento com as outras tabelas. 
+
+Exemplo)
+- ProductID (PK, int, not null) => PK = Primary Key
+- SupplierID (FK, int, null) => FK = Foreign Key 
+
+ALGUMAS REGRINHAS BÁSICAS
+	- No SQL Server você define uma chave estrangeira através de um "Foreign Key 	Constraint" ou Restrição de Chave Estrangeira. 
+	- Uma Restrição de Chave Estrangeira indica que os valores em uma coluna ou grupo 	de colunas na "Tabela Filho" correspondem aos valores na tabela pai. 
+	- Nós podemos entender que uma chave estrangeira mantém a "integridade referencial" 
+
+
+________________
+Create Table
+________________
+
+-SINTAXE-
+1 - Cretate Table nometabela(
+2 - coluna1 tipo restriçãocoluna,
+3 - coluna2 tipo restriçãocoluna, 
+4 - coluna3 tipo restriçãocoluna, 
+5 - ...
+6 - ); 
+
+Principais tipos de restrições (Constraints)
+	- NOT NULL: não permite restrições
+	- UNIQUE: força que todos os valores em uma coluna sejam diferentes 
+	- PRIMARY KEY: uma junção de NOT NULL e UNIQUE 
+	- FOREIGN KEY: identifica únicamente uma linha em outra tabela
+	- CHECK: força uma condição específica em uma coluna 
+	- DEFAULT: força um valor padrão quando nenhum valor é passado
+
+
+____________________
+Novo Banco de Dados
+____________________
+
+1) Botão direito em Databases 
+2) "New Database"
+3) Colocar Nome 
+4) Ok
+
+
+Exercício criar tabelas 1)
+
+-SQL-
+1 - CREATE TABLE canal(
+2 - canalID INT PRIMARY KEY,
+3 - nome VARCHAR(150) NOT NULL,
+4 - contagem inscritos INT DEFAULT 0, 
+5 - datacriação DATETIME NOT NULL
+6 - )
+
+- Dica: depois de criar a tabela, faça um SELECT para verificar se deu tudo certo
+
+
+Exercício criar tabelas 2) 
+
+-SQL-
+1 - CREATE TABLE video (
+2 - videoID INT PRIMARY KEY,
+3 - nome VARCHAR(150) NOT NULL, 
+4 - visualização INT DEFAULT 0,
+5 - likes INT DEFAULT 0,
+6 - dislikes INT DEFAULT 0,
+7 - duração INT NOT NULL,
+8 - canalID INT FOREIGN KEY REFERENCES canal (canalID) 
+9 - ); 
+
+
+_____________
+Insert Into
+_____________
+
+- Este comando pode ser utilizado quando queremos inserir dados em uma tabela já existente, ou quando queremos criar uma nova tabela através dos dados. 
+
+- Se uma coluna tiver valor padrão, não tem problema em omitir. 
+
+-SINTAXE- 
+1 - INSERT INTO nometabela (coluna1, coluna2, ...)
+2 - VALUES (valor1, valor2)
+3 - VALUES (valor1, valor2)
+4 - ...
+  - A quantidade de valores sempre tem que ser igual à quantidade de colunas
+
+- Quando queremos inserir informações de uma tabela existente em outra tabela existente:
+-SINTAXE-
+1 - INSERT INTO tabelaA (coluna1)
+2 - SELECT coluna2
+3 - FROM tabelaB
+
+
+Exemplo 1)
+-SQL-
+1 - CREATE TABLE aula(
+2 - id INT PRIMARY KEY,
+3 - nome VARCHAR(200)
+4 - ); 
+5 - 
+6 - SELECT *
+7 - FROM aula
+8 - 
+9 - INSERT INTO aula (id, nome)
+10 - VALUES (1, 'aula 1')
+
+Exemplo 2) 
+-SQL- 
+1 - INSERT INTO aula (id, nome)
+2 - VALUES
+3 - (2, 'aula 2'),
+4 - (3, 'aula 3'), 
+5 - (4, 'aula 4'), 
+
+
+_____________
+Update
+_____________
+
+- Vai servir para que você atualize linhas do seu banco de dados. 
+	- Quando as informações já estão inseridas e você quer alterar.
+		- Tanto uma linha como também todas as linhas
+
+-SINTAXE- 
+1 - UPDATE nometabela 
+2 - SET coluna1 = valor1
+3 - coluna2 = valor2
+4 - WHERE condição 
+  - Precisamos colocar uma condição para evitar que todas as linhas não sejam alteradas
+
+-SQL-
+1 - UPDATE aula
+2 - SET nome = 'mudei'
+3 - WHERE id = 3
+  - Se não tivessemos colocado condição, todo os nomes teriam sido alterados. 
+
+
+__________
+Delete
+__________
+
+----------------- PRECISA CRIAR CONDIÇÃO!!! 
+
+- Vai apagar linhas do seu banco de dados
+	- Caso nãocoloque condição, vai apagar pura e simplesmente todas as linhas da 	tabela
+
+-SINTAXE- 
+1 - DELETE FROM nometabela
+2 - WHERE condição
+
+-SQL-
+1 - DELETE FROM aula
+2 - WHERE nome = 'mudei'
+
+
+______________
+Alterar Table
+______________
+
+- Como alterar estruturas de tabelas 
+
+-SINTAXE-
+1 - ALTER TABLE nomedatabela
+2 - ação/condições
+
+
+Exemplos Alter Table)
+1) Add, Remover ou Alterar uma Coluna
+2) Set valores padrões para uma coluna
+3) Add ou Remover restrições de colunas
+4) Renomear uma tabela 
+
+-SQL-
+1 - ALTER TABLE youtube
+2 - ADD ativo BIT 
+
+-SQL
+1 - ALTER TABLE youtube 
+2 - ALTER COLUMN categoria VARCHAR(300) NOT NULL
+
+- Para alterar o nome da coluna vai ser necessário utilizar uma PROCEDURE que tem que ser utilizada
+
+- Ou seja, não utilizamos o comando ALTER TABLE 
+
+
+PROCEDURE: mudança de nome coluna
+------------------------------------------------------------------------
+exec sp_rename 'nometabela.nomecolunaatual', 'nomecolunanova', 'column'
+------------------------------------------------------------------------
+- No final o 'column' identifica o tipo de alteração 
+
+Exemplo)
+exec sp_rename 'youtube.nome', 'nomeCanal', 'Column'
+
+
+PROCEDURE: ver configurações tabela 
+------------------------
+exec sp_columns tabela
+------------------------
+
+
+PROCEDURE: mudança de nome tabela
+---------------------------------------------------
+exec sp_rename 'nometabelaatual', 'nometabelanova'
+---------------------------------------------------
+
+Exemplo)
+exec sp_rename 'youtube', 'youtube2'
+
+
+________________________
+Criar tabela temporária
+________________________
+
+-SINTAXE-
+1 - SELECT *
+2 - INTO tabela temporária
+3 - FROM tabela referência 
+
+
+____________
+Drop Table
+____________
+
+- Serve para excluir uma tabela do banco de dados 
+
+-SINTAXE-
+1 - DROP TABLE nomedatabela
+
+- Detalhe: você não consegue "dropar" tabelas que são referenciadas em outras tabelas 
+- Detalhe: serve para apagar a tabela temporária 
+
+
+_______________
+Excluir coluna
+_______________
+
+-SINTAXE
+1 - ALTER TABLE tabela
+2 - DROP COLUMN coluna 
+
+
+______________________
+Deletar info's tabela
+______________________
+
+-SINTAXE-
+1 - TRUNCATE TABLE nomedatabela
+
+
+__________________
+Check Constraint 
+__________________
+
+- Este comando serve para criar restrições de valores que podem ser inseridos em uma coluna de uma tabela em banco de dados quando você está criando uma tabela nova. 
+
+-SINTAXE- 
+1 - CREATE TABLE carteiramotorista (
+2 - id INT NOT NULL,
+3 - nome VARCHAR(255) NOT NULL,
+4 - idade INT CHECK (idade >= 18)
+5 - ); 
+
+Exemplo)
+-SQL-
+1 - INSERT INTO carteiramotorista (id, name, idade) VALUES (1,'rafael',17)
+
+- Note mensagem de erro "conflicted with the check constraint"
+
+
+____________________
+Not Null Constraint
+____________________
+
+- Este comando cria restrições que forçam com que não seja possível inserir dados em uma tabela sem preencher a coluna marcada. 
+
+-SINTAXE- 
+1 - CREATE TABLE carteiramotorista (
+2 - id INT NOT NULL,
+3 - nome VARCHAR(255) NOT NULL,
+4 - idade INT CHECK (idade >= 18)
+5 - );
+
+
+-SQL-
+1 - SELECT * FROM carteiramotorista
+2 - INSERT INTO carteiramotorista (id,nome,idade) VALUES (1,,19)
+
+- Note mensagem de erro indicando que há um erro de sintaxe já que um dos valores não está declarado, dito que uma das condições é a de que não pode ser nulo. 
+
+-SQL-
+1 - SELECT * FROM carteiramotorista
+2 - INSERT INTO carteiramotorista (id,nome,idade) VALUES (1,'Jhonatan',19)
+
+- Agora vai 
+
+
+__________
+Views
+__________
+
+- São tabelas criadas para consulta onde você usa outras tabelas como base para criar uma nova tabela de pesquisa com apenas dados específicos que você precisa de uma tabela.
+	- Vulgo extração de informações específicas para relatórios 
+
+-SINTAXE-
+1 - Create VIEW [pessoas simplificado] AS
+2 - SELECT firstname, middlename, lastname
+3 - FROM person.person
+4 - WHERE title = 'Ms',
+5 - 
+6 - SELECT * FROM [pessoas simplificado]
+
+- Primeiro nós criamos um tipo de tabela temporária com um nome aleatório para relatório
+- Depois nós acessamos a tabela temporária 
+
+
+
+

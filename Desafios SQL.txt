@@ -1,0 +1,178 @@
+
+
+LEMBRETE 1: Podem ter exercícios que existem no Caderno e que não tem nos desafios
+
+LEMBRETE 2: Ao criar uma tabela nova, não utilizar INT mas sim NUMERIC
+
+
+__________________
+Select + Desafios 
+__________________
+
+Exercício 1) A equipe de marketing precisa fazer uma pesquisa sobre nomes mais comuns de seus clientes e precisa do nome e sobrenome de todos os clientes que estão cadastrados no sistema. Lembrando que está em inglês (firstname e lastname). (Solução em 12:23)
+
+
+____________________
+Distinct + Desafios 
+____________________
+
+Exercício 1) Quantos sobrenomes temos em nossa tabela "person.person", de forma única? (Solução em 15:16)
+
+
+_________________
+Where + Desafios 
+_________________
+
+Exercício 1) A equipe de produção de produtos precisa do nome de todas as peças que pesam mais de 500Kg, mas não mais de 700Kg, para inspeção. (peso=weight)(Solução em 24:04)
+
+Exercício 2) Foi pedido pelo marketing uma relação de todos osempregados (employees) que são casados (married) e são assalariados (salaried). (Solução em 24:04)
+*Tem que olhar o contexto das tabelas*
+
+Exercício 3) Um usuário chamado Peter Krebs está devendo um pagamento, consiga o email dele para que possamos enviar uma cobrança. (Solução em 24:04) 
+*Tem que fazer dois comandos SELECT, porque para achar um, precisa do BusinessID no outro*
+
+
+______
+Count
+______
+
+Exercício 1) Eu quero saber quantos produtos temos cadastrados em nossa tabela de produtos (production.product)
+
+Exercício 2) Eu quero saber quantos tamanhos de produtos temos cadastrados em nossa tabela (production.product)
+
+Exercício 3) Eu quero saber quantos tamanhos diferentes de produtos eu tenho cadastrado em nossa tabela (production.product) 
+
+
+____________________
+Order by + Desafios
+____________________
+
+Exercício 1) Obter o ProductID dos 10 produtos mais caros cadastrados no sistema, listando do mais caro para o mais barato. 
+
+Exercício 2) Obter o nome e o "número do produto" dos produtos que tem o ProductID entre 1 e 4. 
+
+
+_________________________
+Desafios Fundamentos SQL
+_________________________
+
+Desafio 1) Quantos produtos temoscadastrados no sistema que custam mais que 1500 dolares?
+
+Desafio 2) Quantas pessoas temos com o sobrenome que inicia com a letra "P"? 
+
+Desafio 3) Em quantas cidades únicas estão dacastrados nossos clientes? 
+
+Desafio 4) Quais são as cidades únicas que temos cadastrados em nosso sistema? 
+
+Desafio 5) Quantos produtos vermelhos tem preço entre 500 a 1000 dolares? 
+
+Desafio 6) Quantos produtos cadastrados tem a palavra 'road' no nome deles?
+
+
+_________________
+Desafio Group By
+_________________
+
+Desafio 1) Eu preciso saber quantas pessoas tem o mesmo "middlename", agrupadas pelo "middlename"?
+
+Desafio 2) Eu preciso saber em média qual é a quantidade (quantity) que cada produto é vendido na loja? 
+
+Desafio 3) Eu quero saber quais foram as 10 vendas que no total tiveram os maiores valores de venda (linetotal) por produto do maior valor para o menor. 
+
+Desafio 4) Eu preciso saber quantos produtos e a quantidade média de produtos temos cadastrados nas nossas ordens de serviço (workorder), agrupados por ProductID. 
+
+
+_______________
+Desafio Having
+_______________
+
+Desafio Having 1) Estamos querendo identificar as provincias (stateprovinceID) com o maior número de cadastros no nosso sistema, então é preciso encontrar quais províncias (stateprovinceID) estão registradas no banco de dados mais que 1000 vezes. 
+
+Desafio Having 2) Sendo que se trata de uma multinacional os gerentes querem saber quais produtos (productID) não estão trazendo em média no mínimo 1 milhão em total de vendas (linetotal).
+
+
+_______________
+Desafio As
+_______________
+
+Desafio As 1) Encontrar o "firstname" e "lastname" da tabela person.person e renomear para português. 
+
+Desafio As 2) Productnumber da tabela production.product renomeado para "Numero do Produto".
+
+Desafio As 3) Sales.salesorderdetail "unitprice" renomeado para "preço unitário". 
+
+
+___________________
+Desafio Inner Join
+___________________
+
+Desafio Inner Join 1) Retorno com "businessentityID", "name", "phonenumbertypeID", "phone number". Tabelas: person.phonenumbertype e person.personphone. 
+
+Desafio Inner Join 2) Retorno com "addressID", "city", "stateprovinceID", "nome do estado". Tabelas: person.stateprovince e person.address. 
+
+
+___________________
+Desafio Self Join
+___________________
+
+Desafio Self Join 1) Eu quero saber na tabela "order details" quais produtos tem o mesmo percentual de desconto.
+
+
+______________________________
+Desafio Subquery ou Subselect
+______________________________
+
+Desafio Subselect) Encontre todos os endereços que estão no estado de 'Alberta', pode trazer todas asinformações. 
+
+
+____________________
+Desafio Insert Into 
+____________________
+
+1) Crie uma nova tabela
+2) Insira uma linha de dados nela 
+3) Insira 3 linhas de dados ao mesmo tempo 
+4) Crie uma segunda tabela 
+5) Insira 1 linha nessa tabela nova 
+6) Copie os dados da segunda tabela para a primeira 
+
+
+_________________
+Desafio Update
+_________________
+
+Desafio Update 1) Alterar o nome de duas linhas diferentes
+
+
+____________________
+Desafio Alter Table
+____________________
+
+Desafio Alter Table) Criar uma tabela nova com 3 colunas e depois:
+			1) Alterar o tipo de uma coluna
+			2) Renomear o nome de uma coluna 
+			3) Renomear o nome da tabela que você criou 
+
+* Detalhe)Por algum motivo dá um erro ao tentarmos trocar de tipo INT para outro tipo. Sempre usar NUMERIC! 
+
+
+_________________
+Desafio Not Null
+_________________
+
+Desafio Not Null) Crie duas tabelas novas e não permita campos vazios em duas colunas 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
