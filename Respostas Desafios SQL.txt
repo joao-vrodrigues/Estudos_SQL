@@ -1,0 +1,157 @@
+Exercício 1) R = 19.972 rows
+1 - SELECT firstname, lastname 
+2 - FROM person.person
+
+Exercício 2) R = 1.206 rows
+1 - SELECT DISTINCT lastname
+2 - FROM person.person
+
+Exercício 3) R = 4 rows
+1 - SELECT name
+2 - FROM production.product
+3 - WHERE wheight > 500 AND weight <= 700
+
+Exercício 4) R = 28 rows 
+1 - SELECT *
+2 - FROM humanresources.employee
+3 - WHERE maritalstatus = 'm' AND salariedflag = 1
+
+Exercício 5) R = peter0@adventure-works.com 
+1 - SELECT * 
+2 - FROM person.person
+3 - WHERE firstname = 'peter' AND lastname = 'Krebs' 
+4 - 
+5 - SELECT *
+6 - FROM person.emailaddress 
+7 - WHERE businessentityID = 26 
+
+Exercício 6) R = 504
+1 - SELECT (*)
+2 - FROM production.product 
+
+Exercicio 7) R = 211
+1 - SELECT COUNT (size)
+2 - FROM production.product
+
+Exercicio 8) R = 749 / 750 / 751 / 752 / 753 / 771 / 772 / 773 / 774 / 775
+1 - SELECT TOP 10 productID
+2 - FROM production.product
+3 - ORDER BY listprice DESC
+
+Exercicio 9)
+1 - SELECT TOP 4 name, productnumber
+2 - FROM production.product
+3 - ORDER BY productID ASC
+
+Desafio 1)
+1 - SELECT COUNT (listprice)
+2 - FROM production.product
+3 - WHERE listprice > 1500
+
+Desafio 2)
+1 - SELECT COUNT (lastname)
+2 - FROM production.product
+3 - WHERE listprice > 1500
+
+Desafio 3)
+1 - SELECT COUNT (DISTINCT (city))
+2 - FROM person.address
+
+Desafio 4)
+1 - SELECT DISTINCT (city)
+2 - FROM person.address
+
+Desafio 5)
+1 - SELECT (COUNT(name))
+2 - FROM production.product
+3 - WHERE color = 'red'
+4 - AND listprice BETWEEN 500 AND 1000
+
+Desafio 6)
+1 - SELECT (COUNT (name))
+2 - FROM production.product 
+3 - WHERE name LIKE '%road%'
+
+Desafio Group By 1)
+1 - SELECT middlename, COUNT (middlename)
+2 - FROM person.person
+3 - GROUP BY middlename 
+
+Desafio Group By 2)
+1 - SELECT productID, AVG (orderQTY)
+2 - FROM sales.salesorderdetail
+3 - GROUP BY productID
+
+Desafio Group By 3)
+1 - SELECT TOP 10 productID, SUM (linetotal)
+2 - FROM sales.salesorderdetail
+3 - GROUP BY productID
+4 - ORDER BY SUM (linetotal) DESC 
+
+Desafio Group By 4)
+1 - SELECT productID, COUNT (productID) AS "contagem",
+2 - AVG (orderqty) AS "Média"
+3 - FROM production.workorder
+4 - GROUP BY productID
+
+Desafio Having 1)
+1 - SELECT stateprovinceID, COUNT (stateprovinceID) AS "Quantidade"
+2 - FROM person.address
+3 - GROUP BY stateprovinceID
+4 - HAVING COUNT (stateprovince) > 1000
+
+Desafio Having 2)
+1 - SELECT productID, AVG (linetotal) AS "Média"
+2 - FROM sales.salesorderdetail
+3 - GROUP BY productID
+4 - HAVING AVG (linetotal) < 1000
+
+Desafio As 1)
+1 - SELECT TOP 10 firstname AS "Nome", lastname AS "Sobrenome"
+2 - FROM person.person
+
+Desafio As 2)
+1 - SELECT TOP 10 productnumber AS "Numero do Produto"
+2 - FROM production.product
+
+Desafio As 3)
+1 - SELECT unitprice AS "preço unitario"
+2 - FROM sales.salesorderdetail
+
+Desafio Inner Join 1)
+1 - SELECT pp.businessentityID, pt.name, pt.phonenumbertypeID, pp.phonenumber
+2 - FROM person.personphone AS pp
+3 - INNER JOIN peron.phonenumbertype AS pt ON pt.phonenumbertypeID = pp.phonenumbertypeID
+
+Desafio Self Join)
+1 - SELECT a.productID, a.discount, b.productID, b.discount
+2 - FROM orderdetails AS a, orderdetails as b
+3 - WHERE a.discount = b.discount 
+
+Desafio Subselect 1)
+1 - SELECT *
+2 - FROM person.address 
+3 - WHERE stateprovinceID IN(
+4 - SELECT stateprovinceID FROM person.stateprovince
+5 - WHERE name = 'Alberta')
+
+
+
+
+
+
+Fim. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

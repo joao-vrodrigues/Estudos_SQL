@@ -1,0 +1,21 @@
+1) Quando exatamente que utilizamos o ";"? É questão de "boas práticas"? 
+
+2) Porque resultados diferentes? Qual a linha de raciocínio lógico correto? 
+
+	1- SELECT COUNT (DISTINCT(city))
+	2 - FROM person.address
+
+	1 - SELECT DISTINCT COUNT city
+	2 - FROM person.address
+
+3) O comando UNION precisa utilizar o mesmo número de colunas entre os SELECT? 
+
+4) INSERT INTO: o que fazer quando uma coluna possui valor padrão? 
+
+5) NUMERIC: porque ao trocarmos de tipos de dados de INT para qualquer outro dá um erro? E ao trocarmos de NUMERIC para qualquer outro tipo dá certo? 
+
+
+
+
+
+Fim. 
